@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+:root {
+  --terracotta: #C1440E;
+  --terracotta-light: #E8633A;
+  --terracotta-pale: #F5E8E1;
+  --gold: #C9A84C;
+  --gold-light: #E8C96B;
+  --cream: #FAF6F0;
+  --deep: #2A1A0E;
+  --text: #3D2B1A;
+  --text-muted: #7A5A42;
+  --tile-blue: #2E6B8A;
+  --tile-blue-light: #4A8FAB;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--text);
+  font-family: 'Crimson Text', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+.tile-border {
+  height: 16px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--terracotta) 0px, var(--terracotta) 20px,
+    var(--gold) 20px, var(--gold) 40px,
+    var(--tile-blue) 40px, var(--tile-blue) 60px,
+    var(--gold) 60px, var(--gold) 80px
+  );
+}
+
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+.section-divider::before,
+.section-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+.timeline { position: relative; padding-left: 2.5rem; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 8px; bottom: 8px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--terracotta), var(--gold), var(--tile-blue), transparent);
+}
+
+.blog-body p { margin-bottom: 1.4rem; }
+.blog-body h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  color: var(--deep);
+  margin: 2rem 0 0.75rem;
+  font-weight: 700;
+}
+.blog-body blockquote {
+  border-left: 3px solid var(--gold);
+  padding: 0.75rem 1.5rem;
+  background: rgba(201,168,76,0.08);
+  margin: 1.5rem 0;
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--text-muted);
+}
+.blog-body strong { font-weight: 700; color: var(--deep); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+.fade-in { animation: fadeUp 0.6s ease both; }
