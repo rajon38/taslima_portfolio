@@ -1,5 +1,8 @@
 "use client";
+import { useLanguage } from "@/lib/LanguageContext";
+
 export default function Hero() {
+  const { t } = useLanguage();
   return (
     <div
       style={{
@@ -47,7 +50,7 @@ export default function Hero() {
             marginBottom: "1rem",
           }}
         >
-          ✦ English Language Teacher ✦
+          {t("heroTitle")}
         </p>
         <h1
           style={{
@@ -58,9 +61,12 @@ export default function Hero() {
             marginBottom: "0.5rem",
           }}
         >
-          Taslima
-          <br />
-          Akter Omi
+          {t("heroName").split("\n").map((line: string, i: number) => (
+            <span key={i}>
+              {line}
+              {i === 0 && <br />}
+            </span>
+          ))}
         </h1>
         <p
           style={{
@@ -71,11 +77,10 @@ export default function Hero() {
             marginBottom: "1.5rem",
           }}
         >
-          Palma de Mallorca, España
+          {t("heroLocation")}
         </p>
         <p style={{ color: "#C5A98A", fontSize: "1.05rem", lineHeight: 1.8, maxWidth: 400 }}>
-          Bringing language to life across four countries — from Dhaka to Brussels to the sunlit
-          shores of Mallorca. Over 8 years of dedicated teaching experience.
+          {t("heroDescription")}
         </p>
         <a
           href="#contact"
@@ -99,7 +104,7 @@ export default function Hero() {
             ((e.currentTarget as HTMLElement).style.background = "var(--terracotta)")
           }
         >
-          Get in Touch
+          {t("heroButton")}
         </a>
       </div>
 

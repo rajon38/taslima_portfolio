@@ -1,20 +1,22 @@
 "use client";
 import { useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
-
-const links = [
-  { href: "#about", label: "About" },
-  { href: "#experience", label: "Experience" },
-  { href: "#skills", label: "Skills" },
-  { href: "#education", label: "Education" },
-  { href: "#resume", label: "Resume" },
-  { href: "#blog", label: "Blog" },
-  { href: "#contact", label: "Contact" },
-];
+import { useLanguage } from "@/lib/LanguageContext";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const isMobile = useIsMobile();
+  const { language, setLanguage, t } = useLanguage();
+
+  const links = [
+    { href: "#about", labelKey: "navAbout" as const },
+    { href: "#experience", labelKey: "navExperience" as const },
+    { href: "#skills", labelKey: "navSkills" as const },
+    { href: "#education", labelKey: "navEducation" as const },
+    { href: "#resume", labelKey: "navResume" as const },
+    { href: "#blog", labelKey: "navBlog" as const },
+    { href: "#contact", labelKey: "navContact" as const },
+  ];
 
   return (
     <nav
@@ -44,38 +46,76 @@ export default function Navbar() {
 
       {/* Desktop links */}
       {!isMobile && (
-        <ul
+        <div
           style={{
             display: "flex",
             gap: "1.5rem",
-            listStyle: "none",
+            alignItems: "center",
           }}
         >
-          {links.map((l) => (
-            <li key={l.href}>
-              <a
-                href={l.href}
-                style={{
-                  color: "#D4B896",
-                  textDecoration: "none",
-                  fontSize: "0.78rem",
-                  fontFamily: "'Libre Baskerville', serif",
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  transition: "color 0.2s",
-                }}
-                onMouseEnter={(e) =>
-                  ((e.target as HTMLElement).style.color = "var(--gold-light)")
-                }
-                onMouseLeave={(e) =>
-                  ((e.target as HTMLElement).style.color = "#D4B896")
-                }
-              >
-                {l.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+          <ul
+            style={{
+              display: "flex",
+              gap: "1.5rem",
+              listStyle: "none",
+              margin: 0,
+              padding: 0,
+            }}
+          >
+            {links.map((l) => (
+              <li key={l.href}>
+                <a
+                  href={l.href}
+                  style={{
+                    color: "#D4B896",
+                    textDecoration: "none",
+                    fontSize: "0.78rem",
+                    fontFamily: "'Libre Baskerville', serif",
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                    transition: "color 0.2s",
+                  }}
+                  onMouseEnter={(e) =>
+                    ((e.target as HTMLElement).style.color = "var(--gold-light)")
+                  }
+                  onMouseLeave={(e) =>
+                    ((e.target as HTMLElement).style.color = "#D4B896")
+                  }
+                >
+                  {t(l.labelKey)}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          {/* Language Toggle */}
+          <button
+            onClick={() => setLanguage(language === "en" ? "es" : "en")}
+            style={{
+              background: "none",
+              border: "1px solid var(--gold)",
+              color: "var(--gold-light)",
+              padding: "0.5rem 1rem",
+              fontSize: "0.75rem",
+              fontFamily: "'Libre Baskerville', serif",
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              cursor: "pointer",
+              borderRadius: "4px",
+              transition: "all 0.2s",
+            }}
+            onMouseEnter={(e) => {
+              (e.target as HTMLElement).style.background = "rgba(201,168,76,0.1)";
+              (e.target as HTMLElement).style.color = "var(--gold-light)";
+            }}
+            onMouseLeave={(e) => {
+              (e.target as HTMLElement).style.background = "none";
+            }}
+            aria-label="Toggle language"
+          >
+            {language === "en" ? "ESP" : "ENG"}
+          </button>
+        </div>
       )}
 
       {/* Mobile hamburger */}
@@ -135,9 +175,41 @@ export default function Navbar() {
                 ((e.currentTarget as HTMLElement).style.background = "transparent")
               }
             >
-              {l.label}
+              {t(l.labelKey)}
             </a>
           ))}
+          
+          {/* Mobile Language Toggle */}
+          <button
+            onClick={() => {
+              setLanguage(language === "en" ? "es" : "en");
+              setMenuOpen(false);
+            }}
+            style={{
+              width: "100%",
+              padding: "1rem 2rem",
+              background: "none",
+              border: "none",
+              borderTop: "1px solid rgba(201,168,76,0.2)",
+              color: "#D4B896",
+              textAlign: "left",
+              fontSize: "0.85rem",
+              fontFamily: "'Libre Baskerville', serif",
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              cursor: "pointer",
+              transition: "background 0.2s",
+            }}
+            onMouseEnter={(e) =>
+              ((e.currentTarget as HTMLElement).style.background =
+                "rgba(201,168,76,0.1)")
+            }
+            onMouseLeave={(e) =>
+              ((e.currentTarget as HTMLElement).style.background = "transparent")
+            }
+          >
+            {language === "en" ? "🇪🇸 Español" : "🇬🇧 English"}
+          </button>
         </div>
       )}
     </nav>

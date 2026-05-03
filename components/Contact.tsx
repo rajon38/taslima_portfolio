@@ -1,13 +1,15 @@
 "use client";
 import SectionHeader from "./SectionHeader";
-
-const contactItems = [
-  { icon: "📍", label: "Location", value: "Plaza Mayor, Palma de Mallorca, Spain" },
-  { icon: "✉", label: "Email", value: "taslimaomee92@gmail.com" },
-  { icon: "☎", label: "Phone", value: "+34 613 503 664 / +34 632 640 721" },
-];
+import { useLanguage } from "@/lib/LanguageContext";
 
 export default function Contact() {
+  const { t } = useLanguage();
+
+  const contactItems = [
+    { icon: "📍", labelKey: "contactLocation", valueKey: "contactLocationValue" },
+    { icon: "✉", labelKey: "contactEmailLabel", valueKey: "contactEmailValue" },
+    { icon: "☎", labelKey: "contactPhone", valueKey: "contactPhoneValue" },
+  ];
   return (
     <div
       id="contact"
@@ -37,7 +39,7 @@ export default function Contact() {
           padding: "5rem 2rem",
         }}
       >
-        <SectionHeader label="✦ Let's Connect" title="Get in Touch" light />
+        <SectionHeader label={t("sectionContactLabel")} title={t("sectionContactTitle")} light />
 
         <div
           style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem" }}
@@ -81,9 +83,11 @@ export default function Contact() {
                       marginBottom: "0.2rem",
                     }}
                   >
-                    {item.label}
+                    {t(item.labelKey as any)}
                   </div>
-                  <div style={{ color: "#D4B896", fontSize: "1rem" }}>{item.value}</div>
+                  <div style={{ color: "#D4B896", fontSize: "1rem" }}>
+                    {t(item.valueKey as any)}
+                  </div>
                 </div>
               </div>
             ))}

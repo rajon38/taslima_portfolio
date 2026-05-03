@@ -1,21 +1,23 @@
 "use client";
 import SectionHeader from "./SectionHeader";
-
-const facts = [
-  { label: "Currently Based In", value: "Palma de Mallorca, Spain 🇪🇸" },
-  { label: "Years of Experience", value: "8+ Years Teaching" },
-  { label: "Countries Taught In", value: "Spain · Belgium · Bangladesh" },
-  { label: "Specialisation", value: "IELTS Coaching · University Level · Summer Camps" },
-  { label: "Email", value: "taslimaomee92@gmail.com" },
-];
+import { useLanguage } from "@/lib/LanguageContext";
 
 export default function About() {
+  const { t } = useLanguage();
+
+  const facts = [
+    { label: t("aboutCurrentlyBasedIn"), value: t("aboutBasedValue") },
+    { label: t("aboutYearsOfExperience"), value: t("aboutYearsValue") },
+    { label: t("aboutCountriesTaughtIn"), value: t("aboutCountriesValue") },
+    { label: t("aboutSpecialisation"), value: t("aboutSpecialisationValue") },
+    { label: t("aboutEmail"), value: t("aboutEmailValue") },
+  ];
   return (
     <section
       id="about"
       style={{ padding: "5rem 2rem", maxWidth: 960, margin: "0 auto" }}
     >
-      <SectionHeader label="✦ Who I Am" title={"A Dedicated English\nLanguage Educator"} />
+      <SectionHeader label={t("sectionWhoIAm")} title={t("sectionAboutTitle")} />
 
       <div
         style={{
@@ -28,9 +30,9 @@ export default function About() {
       >
         <div className="fade-in">
           {[
-            "I am a self-motivated and passionate English Language Teacher with over eight years of diverse international experience. My teaching journey has taken me from university lecture halls in Bangladesh to summer camps in the heart of Mallorca and a school in Belgium.",
-            "I believe language is the bridge between cultures — and teaching English is about opening doors for every student. My approach blends academic rigour with warmth, creativity, and a genuine love of communication.",
-            "Currently based in Palma de Mallorca, I am thrilled to be part of the vibrant educational community in Spain, continuing to inspire students of all ages and backgrounds.",
+            t("aboutParagraph1"),
+            t("aboutParagraph2"),
+            t("aboutParagraph3"),
           ].map((p, i) => (
             <p key={i} style={{ marginBottom: "1.2rem", fontSize: "1.1rem" }}>
               {p}

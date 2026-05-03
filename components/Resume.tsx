@@ -1,15 +1,17 @@
 "use client";
 import { useState } from "react";
 import SectionHeader from "./SectionHeader";
+import { useLanguage } from "@/lib/LanguageContext";
 
 export default function Resume() {
   const [modalOpen, setModalOpen] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <>
       <div id="resume" style={{ background: "#fff", padding: "5rem 2rem" }}>
         <div style={{ maxWidth: 960, margin: "0 auto" }}>
-          <SectionHeader label="✦ My Documents" title="Resume & Video Introduction" />
+          <SectionHeader label={t("sectionResumeLabel")} title={t("sectionResumeTitle")} />
 
           <div
             style={{

@@ -1,11 +1,13 @@
 "use client";
 import SectionHeader from "./SectionHeader";
 import { education } from "@/lib/data";
+import { useLanguage } from "@/lib/LanguageContext";
 
 export default function Education() {
+  const { t } = useLanguage();
   return (
     <section id="education" style={{ padding: "5rem 2rem", maxWidth: 960, margin: "0 auto" }}>
-      <SectionHeader label="✦ Academic Background" title="Education" />
+      <SectionHeader label="✦ Academic Background" title={t("educationTitle")} />
 
       <div
         style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem" }}

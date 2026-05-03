@@ -1,5 +1,8 @@
 "use client";
+import { useLanguage } from "@/lib/LanguageContext";
+
 export default function Footer() {
+  const { t } = useLanguage();
   return (
     <footer
       style={{
@@ -13,9 +16,9 @@ export default function Footer() {
       }}
     >
       <p>
-        © {new Date().getFullYear()} Taslima Akter Omi &nbsp;·&nbsp; English Language Teacher
+        © {new Date().getFullYear()} Taslima Akter Omi &nbsp;·&nbsp; {t("footerProfession")}
         &nbsp;·&nbsp;{" "}
-        <span style={{ color: "var(--terracotta)" }}>Palma de Mallorca, España</span>
+        <span style={{ color: "var(--terracotta)" }}>{t("footerLocation")}</span>
       </p>
     </footer>
   );

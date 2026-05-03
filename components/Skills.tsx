@@ -1,12 +1,24 @@
 "use client";
 import SectionHeader from "./SectionHeader";
 import { skills } from "@/lib/data";
+import { useLanguage } from "@/lib/LanguageContext";
 
 export default function Skills() {
+  const { t } = useLanguage();
+
+  // Map skill names to translation keys
+  const skillTranslations: Record<string, { nameKey: string; descKey: string }> = {
+    "Communication": { nameKey: "skillsCommunication", descKey: "skillsCommunicationDesc" },
+    "IELTS Coaching": { nameKey: "skillsIELTS", descKey: "skillsIELTSDesc" },
+    "Classroom Presence": { nameKey: "skillsClassroom", descKey: "skillsClassroomDesc" },
+    "Report Writing": { nameKey: "skillsReporting", descKey: "skillsReportingDesc" },
+    "Digital Literacy": { nameKey: "skillsDigital", descKey: "skillsDigitalDesc" },
+    "Adaptability": { nameKey: "skillsAdaptability", descKey: "skillsAdaptabilityDesc" },
+  };
   return (
     <div id="skills" style={{ background: "var(--deep)", padding: "5rem 2rem" }}>
       <div style={{ maxWidth: 960, margin: "0 auto" }}>
-        <SectionHeader label="✦ What I Bring" title="Skills & Strengths" light />
+        <SectionHeader label={t("sectionWhatIBring")} title={t("sectionSkillsTitle")} light />
 
         <div
           style={{
@@ -15,7 +27,9 @@ export default function Skills() {
             gap: "1.5rem",
           }}
         >
-          {skills.map((s, i) => (
+          {skills.map((s, i) => {
+            const translationKeys = skillTranslations[s.name];
+            return (
             <div
               key={i}
               className="fade-in"
@@ -54,13 +68,14 @@ export default function Skills() {
                   marginBottom: "0.4rem",
                 }}
               >
-                {s.name}
+                {translationKeys ? t(translationKeys.nameKey as any) : s.name}
               </div>
               <div style={{ fontSize: "0.9rem", color: "#A08060", lineHeight: 1.5 }}>
-                {s.desc}
+                {translationKeys ? t(translationKeys.descKey as any) : s.desc}
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>

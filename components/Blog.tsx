@@ -4,15 +4,17 @@ import SectionHeader from "./SectionHeader";
 import BlogCard from "./BlogCard";
 import BlogDetail from "./BlogDetail";
 import { blogPosts, BlogPost } from "@/lib/data";
+import { useLanguage } from "@/lib/LanguageContext";
 
 export default function Blog() {
   const [selected, setSelected] = useState<BlogPost | null>(null);
+  const { t } = useLanguage();
 
   return (
     <>
       <div id="blog" style={{ background: "#fff", padding: "5rem 2rem" }}>
         <div style={{ maxWidth: 960, margin: "0 auto" }}>
-          <SectionHeader label="✦ Activities & Reflections" title="From the Classroom & Beyond" />
+          <SectionHeader label={t("sectionBlogActivitiesLabel")} title={t("sectionBlogTitle")} />
 
           <div
             style={{

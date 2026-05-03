@@ -1,21 +1,23 @@
 "use client";
 import SectionHeader from "./SectionHeader";
 import { experiences, type Flag } from "@/lib/data";
-
-const flagConfig: Record<Flag, { label: string; bg: string; color: string; border: string }> = {
-  spain: { label: "Spain 🇪🇸", bg: "#F5E8E1", color: "#C1440E", border: "#F5E8E1" },
-  belgium: { label: "Belgium 🇧🇪", bg: "#E8F0F5", color: "#2E6B8A", border: "#C5D8E2" },
-  bangladesh: { label: "Bangladesh 🇧🇩", bg: "#E8F5ED", color: "#1E7A48", border: "#C5E2D2" },
-};
+import { useLanguage } from "@/lib/LanguageContext";
 
 export default function Experience() {
+  const { t } = useLanguage();
+
+  const flagConfig: Record<Flag, { labelKey: string; bg: string; color: string; border: string }> = {
+    spain: { labelKey: "experienceFlagSpain", bg: "#F5E8E1", color: "#C1440E", border: "#F5E8E1" },
+    belgium: { labelKey: "experienceFlagBelgium", bg: "#E8F0F5", color: "#2E6B8A", border: "#C5D8E2" },
+    bangladesh: { labelKey: "experienceFlagBangladesh", bg: "#E8F5ED", color: "#1E7A48", border: "#C5E2D2" },
+  };
   return (
     <div
       id="experience"
       style={{ background: "#fff", padding: "5rem 2rem" }}
     >
       <div style={{ maxWidth: 960, margin: "0 auto" }}>
-        <SectionHeader label="✦ My Journey" title="Teaching Experience" />
+        <SectionHeader label={t("sectionMyJourney")} title={t("sectionExperienceTitle")} />
 
         <div className="timeline">
           {experiences.map((exp, i) => {
@@ -92,7 +94,7 @@ export default function Experience() {
                     border: `1px solid ${flag.border}`,
                   }}
                 >
-                  {flag.label}
+                  {t(flag.labelKey as any)}
                 </span>
               </div>
             );
