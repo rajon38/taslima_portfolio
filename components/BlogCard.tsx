@@ -1,11 +1,26 @@
+"use client";
+
 import Link from "next/link";
 import { BlogPost } from "@/lib/data";
+import { useLanguage } from "@/lib/LanguageContext";
+import { translations } from "@/lib/translations";
 
 interface BlogCardProps {
   post: BlogPost;
 }
 
 export default function BlogCard({ post }: BlogCardProps) {
+  const { t } = useLanguage();
+
+  // Map post IDs to translation keys
+  const titleKey = `blogPost${post.id}Title` as keyof typeof translations["en"];
+  const excerptKey = `blogPost${post.id}Excerpt` as keyof typeof translations["en"];
+  const categoryKey = `blogPost${post.id}Category` as keyof typeof translations["en"];
+
+  const translatedTitle = t(titleKey) || post.title;
+  const translatedExcerpt = t(excerptKey) || post.excerpt;
+  const translatedCategory = t(categoryKey) || post.category;
+
   return (
     <Link href={`/blog/${post.id}`}>
       <div
@@ -42,7 +57,7 @@ export default function BlogCard({ post }: BlogCardProps) {
       >
         <img
           src={post.image}
-          alt={post.title}
+          alt={translatedTitle}
           style={{
             width: "100%",
             height: "100%",
@@ -78,7 +93,7 @@ export default function BlogCard({ post }: BlogCardProps) {
             fontFamily: "'Libre Baskerville', serif",
           }}
         >
-          {post.category}
+          {translatedCategory}
         </div>
 
         {/* Bottom Info */}
@@ -113,7 +128,7 @@ export default function BlogCard({ post }: BlogCardProps) {
               fontWeight: 700,
             }}
           >
-            {post.title}
+            {translatedTitle}
           </h3>
         </div>
       </div>
@@ -136,7 +151,7 @@ export default function BlogCard({ post }: BlogCardProps) {
             flex: 1,
           }}
         >
-          {post.excerpt}
+          {translatedExcerpt}
         </p>
 
         {/* Footer */}
