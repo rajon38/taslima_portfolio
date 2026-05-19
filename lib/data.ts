@@ -28,7 +28,7 @@ export interface BlogPost {
   category: string;
   date: string;
   readTime: string;
-  emoji: string;
+  image: string;
   bg: string;
   title: string;
   excerpt: string;
@@ -154,12 +154,55 @@ export const education: Education[] = [
 
 // ─── BLOG POSTS ───────────────────────────────────────────────────────
 export const blogPosts: BlogPost[] = [
-  {
+    {
     id: 1,
-    category: "Teaching Life",
-    date: "March 2025",
+    category: "Teaching Philosophy",
+    date: "May 2026",
     readTime: "5 min read",
-    emoji: "🌅",
+    image: "/omi-techer.jpeg",
+    bg: "linear-gradient(135deg, #F5E1D1 0%, #E8B180 100%)",
+    title: "Building Confident English Users: My TEFL Teaching Philosophy",
+    excerpt:
+      "As a dedicated TEFL English teacher, I believe that confidence is the foundation of real communication. Here is how I create student-centered lessons that transform learners into confident English users.",
+    tags: ["TEFL", "Teaching Philosophy", "Student-Centered Learning", "Ocidiomes"],
+    body: `
+      <h3>What Drives My Teaching</h3>
+      <p>I am a dedicated TEFL English teacher with a passion for helping learners build confidence and communicate effectively in real-world situations. My core belief is simple: the best language learning happens when students feel safe, supported, and genuinely interested in what they are saying.</p>
+      
+      <h3>Student-Centered Learning at Its Heart</h3>
+      <p>I create engaging, student-centered lessons tailored to different learning styles, language levels, and goals. Whether teaching primary school children in Palma or business professionals preparing for international presentations, I know that one-size-fits-all instruction simply does not work.</p>
+      <p>My teaching approach combines:</p>
+      <ul style="margin-left: 20px;">
+        <li><strong>Clear grammar instruction</strong> — foundational accuracy that students can build upon</li>
+        <li><strong>Interactive speaking activities</strong> — because fluency comes from practice, not memorisation</li>
+        <li><strong>Practical vocabulary development</strong> — words students actually need in real situations</li>
+      </ul>
+      
+      <h3>The Balance Between Fluency and Accuracy</h3>
+      <p>Too many classrooms prioritize one at the expense of the other. In mine, both matter equally. I foster a positive and encouraging classroom environment where students feel comfortable practicing English and making progress at their own pace. Mistakes are not failures — they are evidence of learning.</p>
+      <blockquote>Language is not about perfection. It is about connection, expression, and the courage to try.</blockquote>
+      
+      <h3>Continuous Growth and Innovation</h3>
+      <p>I am committed to continuous professional development and enjoy using creative methods, technology, and cultural awareness to make learning meaningful and enjoyable. Whether it is drama-based activities, technology integration, or weaving local culture into every lesson, I believe teaching should be as dynamic as the world my students are preparing to navigate.</p>
+      
+      <h3>My Goal for Every Student</h3>
+      <p>My ultimate goal is to inspire students to become confident English users in academic, professional, and everyday contexts. I want them to walk out of my classroom not just knowing grammar rules, but truly believing in their ability to express themselves, connect with others, and pursue their ambitions in English.</p>
+      
+      <h3>Verified Credentials and Commitment</h3>
+      <p>My teaching journey has taken me across three continents — Bangladesh, Belgium, and Spain — and every context has deepened my commitment to excellence. I hold verified TEFL credentials and maintain a strong record of student achievement. You can verify my teaching record here: <a href="https://teacherrecord.com/checking/TR1588373870" target="_blank" style="color: #C1440E; text-decoration: underline;">Teacher Record Certificate</a></p>
+      
+      <p>I am currently part of the Ocidiomes family — an international team of over 200 teachers dedicated to the same mission: transforming lives through English language education. <a href="https://www.facebook.com/share/r/175gFdFXLC/?mibextid=wwXIfr" target="_blank" style="color: #C1440E; text-decoration: underline;">Learn more about our international teaching community</a></p>
+      
+      <h3>Looking Forward</h3>
+      <p>Every student I teach is a conversation partner, not just a test score to improve. This philosophy guides everything I do — from lesson planning to assessment to the genuine relationships I build with students and families. That is what real teaching looks like.</p>
+    `,
+  },
+  {
+    id: 2,
+    category: "Teaching Life Achievements",
+    date: "March 2026",
+    readTime: "5 min read",
+    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80",
     bg: "linear-gradient(135deg, #F5E8D8 0%, #E8C9A0 100%)",
     title: "My First Summer Camp in Mallorca: What I Learned",
     excerpt:
@@ -178,11 +221,11 @@ export const blogPosts: BlogPost[] = [
     `,
   },
   {
-    id: 2,
+    id: 3,
     category: "Teaching Tips",
     date: "January 2025",
     readTime: "6 min read",
-    emoji: "📚",
+    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80",
     bg: "linear-gradient(135deg, #E1EEF5 0%, #B5D4E8 100%)",
     title: "7 Activities That Make IELTS Preparation Actually Enjoyable",
     excerpt:
@@ -202,11 +245,11 @@ export const blogPosts: BlogPost[] = [
     `,
   },
   {
-    id: 3,
+    id: 4,
     category: "Reflections",
     date: "September 2024",
     readTime: "4 min read",
-    emoji: "🇧🇪",
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
     bg: "linear-gradient(135deg, #EDE8F5 0%, #C8B8E8 100%)",
     title: "Six Months in Belgium: What a Brussels Winter Teaches You",
     excerpt:
@@ -225,11 +268,11 @@ export const blogPosts: BlogPost[] = [
     `,
   },
   {
-    id: 4,
+    id: 5,
     category: "Classroom Ideas",
     date: "November 2024",
     readTime: "5 min read",
-    emoji: "🎭",
+    image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80",
     bg: "linear-gradient(135deg, #F5EDE1 0%, #E8C8A0 100%)",
     title: "Drama in the Classroom: Why Role-Play Changes Everything",
     excerpt:
@@ -248,11 +291,11 @@ export const blogPosts: BlogPost[] = [
     `,
   },
   {
-    id: 5,
+    id: 6,
     category: "Life in Spain",
     date: "July 2024",
     readTime: "3 min read",
-    emoji: "🌺",
+    image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80",
     bg: "linear-gradient(135deg, #F5E1E1 0%, #E8A0A0 100%)",
     title: "Living and Teaching in Palma de Mallorca: A Love Letter",
     excerpt:
@@ -271,11 +314,11 @@ export const blogPosts: BlogPost[] = [
     `,
   },
   {
-    id: 6,
+    id: 7,
     category: "Personal Story",
     date: "April 2024",
     readTime: "4 min read",
-    emoji: "🎓",
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80",
     bg: "linear-gradient(135deg, #E1F0E8 0%, #A0C8B0 100%)",
     title: "From MBA to English Teacher: Why I Changed My Path",
     excerpt:
@@ -293,4 +336,5 @@ export const blogPosts: BlogPost[] = [
       <p>Eight years in, I have never once wished I had stayed in the corporate world. Teaching is demanding, humbling, and endlessly surprising. Every classroom is a new story. Every student is a new reason to be better at what you do.</p>
     `,
   },
+
 ];

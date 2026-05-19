@@ -71,92 +71,167 @@ export default async function BlogPostPage({ params }: Props) {
         </span>
       </nav>
 
-      {/* Hero */}
-      <div
+      {/* Hero Section */}
+      <section
         style={{
-          height: 280,
+          minHeight: "90vh",
           background: post.bg,
-          display: "flex",
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
           alignItems: "center",
-          justifyContent: "center",
-          fontSize: "6rem",
-          position: "relative",
+          gap: "3rem",
+          padding: "4rem 2rem",
         }}
       >
-        <span style={{ position: "relative", zIndex: 1 }}>{post.emoji}</span>
+        {/* Left Content */}
         <div
           style={{
-            position: "absolute",
-            inset: 0,
-            background: "linear-gradient(to top, rgba(250,246,240,0.85), transparent)",
-          }}
-        />
-      </div>
-
-      {/* Content */}
-      <div style={{ maxWidth: 720, margin: "0 auto", padding: "3rem 2rem 5rem" }}>
-        {/* Meta */}
-        <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1rem", flexWrap: "wrap" }}>
-          <span
-            style={{
-              background: "var(--terracotta)",
-              color: "#fff",
-              fontFamily: "'Libre Baskerville', serif",
-              fontSize: "0.65rem",
-              letterSpacing: "0.15em",
-              textTransform: "uppercase",
-              padding: "3px 10px",
-            }}
-          >
-            {post.category}
-          </span>
-          <span
-            style={{
-              fontFamily: "'Libre Baskerville', serif",
-              fontSize: "0.8rem",
-              color: "var(--text-muted)",
-              letterSpacing: "0.08em",
-            }}
-          >
-            {post.date} &nbsp;·&nbsp; {post.readTime}
-          </span>
-        </div>
-
-        <h1
-          style={{
-            fontFamily: "'Playfair Display', serif",
-            fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
+            maxWidth: 620,
+            margin: "0 auto",
             color: "var(--deep)",
-            lineHeight: 1.2,
-            marginBottom: "1.5rem",
           }}
         >
-          {post.title}
-        </h1>
+          <div
+            style={{
+              display: "flex",
+              gap: "1rem",
+              flexWrap: "wrap",
+              marginBottom: "1.5rem",
+            }}
+          >
+            <span
+              style={{
+                background: "#C1440E",
+                color: "#fff",
+                padding: "6px 14px",
+                borderRadius: 999,
+                fontSize: "0.72rem",
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                fontFamily: "'Libre Baskerville', serif",
+              }}
+            >
+              {post.category}
+            </span>
 
+            <span
+              style={{
+                color: "var(--text-muted)",
+                fontSize: "0.82rem",
+                letterSpacing: "0.08em",
+                fontFamily: "'Libre Baskerville', serif",
+              }}
+            >
+              {post.date}
+            </span>
+
+            <span
+              style={{
+                color: "var(--text-muted)",
+                fontSize: "0.82rem",
+                letterSpacing: "0.08em",
+                fontFamily: "'Libre Baskerville', serif",
+              }}
+            >
+              {post.readTime}
+            </span>
+          </div>
+
+          <h1
+            style={{
+              fontSize: "clamp(2.8rem, 6vw, 5rem)",
+              lineHeight: 1.05,
+              marginBottom: "1.5rem",
+              fontFamily: "'Playfair Display', serif",
+              fontWeight: 700,
+            }}
+          >
+            {post.title}
+          </h1>
+
+          <div
+            style={{
+              width: 120,
+              height: 4,
+              background: "linear-gradient(to right, #C1440E, #F0C27B)",
+              marginBottom: "2rem",
+              borderRadius: 99,
+            }}
+          />
+
+          <p
+            style={{
+              color: "var(--text)",
+              lineHeight: 1.9,
+              fontSize: "1.08rem",
+              maxWidth: 560,
+            }}
+          >
+            A thoughtful exploration of creativity, expression, and modern storytelling.
+          </p>
+        </div>
+
+        {/* Right Image */}
         <div
           style={{
-            width: 60,
-            height: 3,
-            background: "linear-gradient(to right, var(--terracotta), var(--gold))",
-            marginBottom: "2rem",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
-        />
+        >
+          <div
+            style={{
+              position: "relative",
+              width: "100%",
+              maxWidth: 540,
+              borderRadius: 28,
+              overflow: "hidden",
+              boxShadow: "0 20px 50px rgba(0,0,0,0.15)",
+              background: "#fff",
+              border: "1px solid rgba(0,0,0,0.08)",
+            }}
+          >
+            <img
+              src={post.image}
+              alt={post.title}
+              style={{
+                width: "100%",
+                display: "block",
+                objectFit: "cover",
+                maxHeight: "75vh",
+              }}
+            />
+          </div>
+        </div>
+      </section>
 
+      {/* Article Body */}
+      <section
+        style={{
+          maxWidth: 900,
+          margin: "0 auto",
+          padding: "5rem 2rem",
+        }}
+      >
         <div
           className="blog-body"
-          style={{ fontSize: "1.1rem", lineHeight: 1.9, color: "var(--text)" }}
+          style={{
+            fontSize: "1.12rem",
+            lineHeight: 2,
+            color: "#2d2d2d",
+            fontWeight: 400,
+          }}
           dangerouslySetInnerHTML={{ __html: post.body }}
         />
 
         {/* Tags */}
         <div
           style={{
-            marginTop: "2.5rem",
-            paddingTop: "1.5rem",
-            borderTop: "1px solid rgba(193,68,14,0.15)",
+            marginTop: "4rem",
+            paddingTop: "2rem",
+            borderTop: "1px solid rgba(0,0,0,0.1)",
             display: "flex",
-            gap: "0.5rem",
+            gap: "0.8rem",
             flexWrap: "wrap",
           }}
         >
@@ -164,43 +239,54 @@ export default async function BlogPostPage({ params }: Props) {
             <span
               key={tag}
               style={{
-                background: "var(--terracotta-pale)",
-                color: "var(--terracotta)",
+                padding: "10px 18px",
+                borderRadius: 999,
+                background: "rgba(193,68,14,0.08)",
+                border: "1px solid rgba(193,68,14,0.15)",
+                color: "#C1440E",
+                fontSize: "0.82rem",
+                letterSpacing: "0.05em",
                 fontFamily: "'Libre Baskerville', serif",
-                fontSize: "0.72rem",
-                letterSpacing: "0.08em",
-                padding: "4px 12px",
-                border: "1px solid rgba(193,68,14,0.2)",
               }}
             >
-              {tag}
+              #{tag}
             </span>
           ))}
         </div>
 
-        {/* Back */}
-        <div style={{ marginTop: "3rem" }}>
+        {/* Bottom Navigation */}
+        <div
+          style={{
+            marginTop: "4rem",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
           <Link
             href="/#blog"
             style={{
-              display: "inline-block",
-              padding: "0.75rem 2rem",
-              background: "var(--terracotta)",
+              background: "#111",
               color: "#fff",
-              textDecoration: "none",
-              fontFamily: "'Libre Baskerville', serif",
-              fontSize: "0.85rem",
+              padding: "14px 30px",
+              borderRadius: 999,
+              cursor: "pointer",
+              fontSize: "0.82rem",
               letterSpacing: "0.1em",
               textTransform: "uppercase",
+              fontFamily: "'Libre Baskerville', serif",
+              textDecoration: "none",
+              display: "inline-block",
+              transition: "all 0.25s ease",
             }}
           >
-            ← Back to Blog
+            ← Back to Articles
           </Link>
         </div>
-      </div>
+      </section>
 
       <TileBorder />
       <Footer />
     </>
   );
 }
+

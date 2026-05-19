@@ -1,138 +1,178 @@
+import Link from "next/link";
 import { BlogPost } from "@/lib/data";
 
 interface BlogCardProps {
   post: BlogPost;
-  onClick: () => void;
 }
 
-export default function BlogCard({ post, onClick }: BlogCardProps) {
+export default function BlogCard({ post }: BlogCardProps) {
   return (
-    <div
-      onClick={onClick}
-      style={{
-        background: "#fff",
-        border: "1px solid rgba(193,68,14,0.15)",
-        cursor: "pointer",
-        transition: "transform 0.2s, box-shadow 0.2s, border-color 0.2s",
-        display: "flex",
-        flexDirection: "column",
-      }}
-      onMouseEnter={(e) => {
-        const el = e.currentTarget as HTMLElement;
-        el.style.transform = "translateY(-4px)";
-        el.style.boxShadow = "0 12px 32px rgba(42,26,14,0.12)";
-        el.style.borderColor = "var(--terracotta)";
-      }}
-      onMouseLeave={(e) => {
-        const el = e.currentTarget as HTMLElement;
-        el.style.transform = "";
-        el.style.boxShadow = "";
-        el.style.borderColor = "rgba(193,68,14,0.15)";
-      }}
-    >
-      {/* Thumbnail */}
+    <Link href={`/blog/${post.id}`}>
       <div
         style={{
-          height: 160,
-          background: post.bg,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          fontSize: "3.5rem",
-          position: "relative",
+          background: "#fff",
           overflow: "hidden",
+          cursor: "pointer",
+          transition: "all 0.3s ease",
+          display: "flex",
+          flexDirection: "column",
+          border: "1px solid rgba(0,0,0,0.06)",
+          boxShadow: "0 4px 20px rgba(0,0,0,0.04)",
+          height: "100%",
+        }}
+        onMouseEnter={(e) => {
+          const el = e.currentTarget as HTMLElement;
+          el.style.transform = "translateY(-8px)";
+          el.style.boxShadow = "0 2px 4px var(--terracotta)";
+        }}
+        onMouseLeave={(e) => {
+          const el = e.currentTarget as HTMLElement;
+          el.style.transform = "translateY(0px)";
+          el.style.boxShadow = "0 4px 20px rgba(0,0,0,0.04)";
         }}
       >
-        <span
+      {/* Image Section */}
+      <div
+        style={{
+          position: "relative",
+          height: 260,
+          overflow: "hidden",
+          background: post.bg,
+        }}
+      >
+        <img
+          src={post.image}
+          alt={post.title}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            transition: "transform 0.5s ease",
+          }}
+        />
+
+        {/* Overlay */}
+        <div
           style={{
             position: "absolute",
-            top: 12,
-            left: 12,
+            inset: 0,
+            background:
+              "linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.05))",
+          }}
+        />
+
+        {/* Category */}
+        <div
+          style={{
+            position: "absolute",
+            top: 18,
+            left: 18,
             background: "var(--terracotta)",
+            backdropFilter: "blur(8px)",
+            border: "1px solid rgba(255,255,255,0.18)",
             color: "#fff",
-            fontFamily: "'Libre Baskerville', serif",
-            fontSize: "0.65rem",
-            letterSpacing: "0.15em",
+            padding: "8px 14px",
+            fontSize: "0.68rem",
+            letterSpacing: "0.12em",
             textTransform: "uppercase",
-            padding: "3px 10px",
-            zIndex: 1,
+            fontFamily: "'Libre Baskerville', serif",
           }}
         >
           {post.category}
-        </span>
-        <span style={{ position: "relative", zIndex: 1 }}>{post.emoji}</span>
+        </div>
+
+        {/* Bottom Info */}
         <div
           style={{
             position: "absolute",
-            bottom: 0,
-            left: 0,
-            right: 0,
-            height: "40%",
-            background: "linear-gradient(to top, rgba(0,0,0,0.25), transparent)",
+            left: 24,
+            right: 24,
+            bottom: 22,
+            color: "#fff",
           }}
-        />
+        >
+          <div
+            style={{
+              fontSize: "0.72rem",
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              opacity: 0.8,
+              marginBottom: "0.6rem",
+              fontFamily: "'Libre Baskerville', serif",
+            }}
+          >
+            {post.date}
+          </div>
+
+          <h3
+            style={{
+              margin: 0,
+              fontFamily: "'Playfair Display', serif",
+              fontSize: "1.5rem",
+              lineHeight: 1.25,
+              fontWeight: 700,
+            }}
+          >
+            {post.title}
+          </h3>
+        </div>
       </div>
 
-      {/* Body */}
-      <div style={{ padding: "1.25rem 1.5rem 1rem", flex: 1, display: "flex", flexDirection: "column" }}>
-        <div
+      {/* Content */}
+      <div
+        style={{
+          padding: "1.8rem",
+          display: "flex",
+          flexDirection: "column",
+          flex: 1,
+        }}
+      >
+        <p
           style={{
-            fontFamily: "'Libre Baskerville', serif",
-            fontSize: "0.7rem",
-            letterSpacing: "0.15em",
-            textTransform: "uppercase",
-            color: "var(--gold)",
-            marginBottom: "0.5rem",
-          }}
-        >
-          {post.date}
-        </div>
-        <div
-          style={{
-            fontFamily: "'Playfair Display', serif",
-            fontSize: "1.15rem",
-            color: "var(--deep)",
-            lineHeight: 1.35,
-            marginBottom: "0.6rem",
-          }}
-        >
-          {post.title}
-        </div>
-        <div
-          style={{
-            fontSize: "0.92rem",
+            margin: 0,
             color: "var(--text-muted)",
-            lineHeight: 1.6,
+            lineHeight: 1.8,
+            fontSize: "0.96rem",
             flex: 1,
           }}
         >
           {post.excerpt}
-        </div>
-      </div>
+        </p>
 
-      {/* Footer */}
-      <div
-        style={{
-          padding: "0.75rem 1.5rem",
-          borderTop: "1px solid rgba(193,68,14,0.1)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <span
+        {/* Footer */}
+        <div
           style={{
-            fontFamily: "'Libre Baskerville', serif",
-            fontSize: "0.72rem",
-            letterSpacing: "0.12em",
-            textTransform: "uppercase",
-            color: "var(--terracotta)",
+            marginTop: "1.8rem",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
           }}
         >
-          Read Article →
-        </span>
-        <span style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>{post.readTime}</span>
+          <span
+            style={{
+              color: "var(--terracotta)",
+              fontSize: "0.78rem",
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              fontFamily: "'Libre Baskerville', serif",
+              fontWeight: 600,
+            }}
+          >
+            Read Story →
+          </span>
+
+          <span
+            style={{
+              color: "var(--text-muted)",
+              fontSize: "0.82rem",
+              fontFamily: "'Libre Baskerville', serif",
+            }}
+          >
+            {post.readTime}
+          </span>
+        </div>
       </div>
     </div>
+  </Link>
   );
 }

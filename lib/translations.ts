@@ -13,7 +13,7 @@ export const translations = {
 
     // Hero
     heroTitle: "✦ English Language Teacher ✦",
-    heroName: "Taslima\nAktor Omi",
+    heroName: "Taslima\nAkter Omi",
     heroLocation: "Palma de Mallorca, España",
     heroDescription:
       "Bringing language to life across four countries — from Dhaka to Brussels to the sunlit shores of Mallorca. Over 8 years of dedicated teaching experience.",
@@ -122,7 +122,7 @@ export const translations = {
 
     // Hero
     heroTitle: "✦ Profesora de Inglés ✦",
-    heroName: "Taslima\nAktor Omi",
+    heroName: "Taslima\nAkter Omi",
     heroLocation: "Palma de Mallorca, España",
     heroDescription:
       "Haciendo que el idioma cobre vida en cuatro países — desde Dhaka hasta Bruselas hasta las costas soleadas de Mallorca. Más de 8 años de experiencia docente dedicada.",
