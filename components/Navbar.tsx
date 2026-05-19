@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useLanguage } from "@/lib/LanguageContext";
 
@@ -32,17 +33,27 @@ export default function Navbar() {
         height: "60px",
       }}
     >
-      <div
+      <Link
+        href="/"
         style={{
           fontFamily: "'Playfair Display', serif",
           fontSize: "1.1rem",
           color: "var(--gold-light)",
           letterSpacing: "0.05em",
           fontStyle: "italic",
+          textDecoration: "none",
+          cursor: "pointer",
+          transition: "opacity 0.2s",
+        }}
+        onMouseEnter={(e) => {
+          (e.currentTarget as HTMLElement).style.opacity = "0.8";
+        }}
+        onMouseLeave={(e) => {
+          (e.currentTarget as HTMLElement).style.opacity = "1";
         }}
       >
         Taslima Akter Omi
-      </div>
+      </Link>
 
       {/* Desktop links */}
       {!isMobile && (
