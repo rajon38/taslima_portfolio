@@ -7,6 +7,7 @@ import Skills from "@/components/Skills";
 import Education from "@/components/Education";
 import Resume from "@/components/Resume";
 import Blog from "@/components/Blog";
+import Certificates from "@/components/Certificates";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -19,6 +20,7 @@ export default function Home() {
       <TileBorder />
       <About />
       <Experience />
+      <Certificates />
       <Skills />
       <Education />
       <Resume />

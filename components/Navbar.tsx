@@ -12,6 +12,7 @@ export default function Navbar() {
   const links = [
     { href: "#about", labelKey: "navAbout" as const },
     { href: "#experience", labelKey: "navExperience" as const },
+    { href: "#certificates", labelKey: "navCertificates" as const },
     { href: "#skills", labelKey: "navSkills" as const },
     { href: "#education", labelKey: "navEducation" as const },
     { href: "#resume", labelKey: "navResume" as const },

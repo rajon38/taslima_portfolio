@@ -23,6 +23,14 @@ export interface Education {
   gpa: string;
 }
 
+export interface Certificate {
+  name: string;
+  image?: string;
+  issuer: string;
+  year: string;
+  url?: string;
+}
+
 export interface BlogPost {
   id: number;
   category: string;
@@ -149,6 +157,17 @@ export const education: Education[] = [
     uni: "Jagannath University, Dhaka",
     detail: "Department of Accounting & Information Systems · Batch 6 · 2015",
     gpa: "3.54 / 4.00",
+  },
+];
+
+// ─── CERTIFICATES ────────────────────────────────────────────────────
+export const certificates: Certificate[] = [
+  {
+    name: "TEFL Certification",
+    image: "/cirtificate.jpeg",
+    issuer: "TEFL Org",
+    year: "2026",
+    url: "https://teacherrecord.com/checking/TR1588373870",
   },
 ];
 

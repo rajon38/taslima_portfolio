@@ -9,6 +9,7 @@ export const translations = {
     navEducation: "Education",
     navResume: "Resume",
     navBlog: "Blog",
+    navCertificates: "Certificates",
     navContact: "Contact",
 
     // Hero
@@ -31,6 +32,8 @@ export const translations = {
     sectionResumeTitle: "Resume & Video Introduction",
     sectionBlogActivitiesLabel: "✦ Activities & Reflections",
     sectionBlogTitle: "From the Classroom & Beyond",
+    sectionCertificatesLabel: "✦ Credentials",
+    sectionCertificatesTitle: "Professional Certifications",
     sectionContactLabel: "✦ Let's Connect",
     sectionContactTitle: "Get in Touch",
 
@@ -168,6 +171,7 @@ export const translations = {
     navEducation: "Educación",
     navResume: "CV",
     navBlog: "Blog",
+    navCertificates: "Certificados",
     navContact: "Contacto",
 
     // Hero
@@ -190,6 +194,8 @@ export const translations = {
     sectionResumeTitle: "Currículum e Introducción de Video",
     sectionBlogActivitiesLabel: "✦ Actividades y Reflexiones",
     sectionBlogTitle: "Del Aula y Más Allá",
+    sectionCertificatesLabel: "✦ Credenciales",
+    sectionCertificatesTitle: "Certificaciones Profesionales",
     sectionContactLabel: "✦ Conectemos",
     sectionContactTitle: "Ponte en Contacto",
 
