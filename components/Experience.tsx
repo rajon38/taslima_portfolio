@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import SectionHeader from "./SectionHeader";
 import { experiences, type Flag } from "@/lib/data";

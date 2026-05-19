@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import SectionHeader from "./SectionHeader";
 import { useLanguage } from "@/lib/LanguageContext";
@@ -110,8 +111,7 @@ export default function Contact() {
                   lineHeight: 1.6,
                 }}
               >
-                &ldquo;Language is the road map of a culture. It tells you where its people come
-                from and where they are going.&rdquo;
+                &ldquo;{t("contactQuoteText")}&rdquo;
               </div>
               <div
                 style={{
@@ -123,7 +123,7 @@ export default function Contact() {
                   textTransform: "uppercase",
                 }}
               >
-                — Rita Mae Brown
+                {t("contactQuoteAuthor")}
               </div>
               <div
                 style={{
@@ -133,9 +133,7 @@ export default function Contact() {
                   lineHeight: 1.7,
                 }}
               >
-                I am open to new teaching opportunities, collaborations, and conversations.
-                Whether you need an English teacher for your school, summer programme, or coaching
-                centre — I would love to hear from you.
+                {t("contactCTAMessage")}
               </div>
             </div>
           </div>

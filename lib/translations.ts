@@ -138,6 +138,9 @@ export const translations = {
     contactEmailValue: "taslimaomee92@gmail.com",
     contactPhone: "Phone",
     contactPhoneValue: "+34 613 503 664 / +34 632 640 721",
+    contactQuoteText: "Language is the road map of a culture. It tells you where its people come from and where they are going.",
+    contactQuoteAuthor: "— Rita Mae Brown",
+    contactCTAMessage: "I am open to new teaching opportunities, collaborations, and conversations. Whether you need an English teacher for your school, summer programme, or coaching centre — I would love to hear from you.",
 
     // Footer
     footerText: "© 2025 Taslima Akter Omi. All rights reserved.",
@@ -294,6 +297,9 @@ export const translations = {
     contactEmailValue: "taslimaomee92@gmail.com",
     contactPhone: "Teléfono",
     contactPhoneValue: "+34 613 503 664 / +34 632 640 721",
+    contactQuoteText: "El idioma es el mapa de ruta de una cultura. Te dice de dónde vienen sus personas y hacia dónde van.",
+    contactQuoteAuthor: "— Rita Mae Brown",
+    contactCTAMessage: "Estoy abierta a nuevas oportunidades de enseñanza, colaboraciones y conversaciones. Ya sea que necesites un profesor de inglés para tu escuela, programa de verano o centro de coaching — me encantaría saber de ti.",
 
     // Footer
     footerText: "© 2025 Taslima Akter Omi. Todos los derechos reservados.",

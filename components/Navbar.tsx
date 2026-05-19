@@ -45,6 +45,10 @@ export default function Navbar() {
           cursor: "pointer",
           transition: "opacity 0.2s",
         }}
+        onClick={(e) => {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }}
         onMouseEnter={(e) => {
           (e.currentTarget as HTMLElement).style.opacity = "0.8";
         }}
